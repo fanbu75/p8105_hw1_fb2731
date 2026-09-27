@@ -54,3 +54,46 @@ ggsave(
   plot = penguin_plot
 )
 ```
+# Problem 2
+```{r create-dataframe}
+set.seed(123)
+
+hw_df =
+  tibble(
+    normal_sample = rnorm(10),
+    positive = normal_sample > 0,
+    character_var = c(
+      "a", "b", "c", "d", "e",
+      "f", "g", "h", "i", "j"
+    ),
+    factor_var = factor(
+      c(
+        "low", "medium", "high", "low", "medium",
+        "high", "low", "medium", "high", "low"
+      )
+    )
+  )
+
+hw_df
+```
+## Means of the variables
+
+```{r variable-means}
+mean(pull(hw_df, normal_sample))
+
+mean(pull(hw_df, positive))
+
+mean(pull(hw_df, character_var))
+
+mean(pull(hw_df, factor_var))
+```
+## Type coercion
+
+```{r coercion, results='hide'}
+as.numeric(pull(hw_df, positive))
+
+as.numeric(pull(hw_df, character_var))
+
+as.numeric(pull(hw_df, factor_var))
+```
+results='hide'
